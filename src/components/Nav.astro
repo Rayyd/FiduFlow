@@ -1,48 +1,24 @@
 ---
-// src/components/Nav.astro
 import clsx from "clsx";
-
-// Normalise BASE_URL => toujours un "/" final
-const BASE = import.meta.env.BASE_URL?.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : (import.meta.env.BASE_URL || "/") + "/";
-
+const BASE = (import.meta.env.BASE_URL || "/");
+const BASE_NORM = BASE.endsWith("/") ? BASE : BASE + "/";
 const links = [
-  { href: `${BASE}`, label: "Home" },
-  { href: `${BASE}services`, label: "Services" },
-  { href: `${BASE}pricing`, label: "Pricing" },
-  { href: `${BASE}contact`, label: "Contact" },
+  { href: `${BASE_NORM}`, label: "Home" },
+  { href: `${BASE_NORM}services`, label: "Services" },
+  { href: `${BASE_NORM}pricing`, label: "Pricing" },
+  { href: `${BASE_NORM}contact`, label: "Contact" },
 ];
 ---
-<nav class="w-full sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href={BASE} class="flex items-center gap-2" aria-label="FiduFlow home">
-      <img src={`${BASE}favicon.svg`} width="28" height="28" alt="" />
+<nav ...>
+  <div ...>
+    <a href={BASE_NORM} ...>
+      <img src={`${BASE_NORM}favicon.svg`} width="28" height="28" alt="" />
       <span class="font-display font-bold text-lg tracking-tight">FiduFlow</span>
     </a>
-
-    <ul class="flex items-center gap-6">
-      {links.map((l) => (
-        <li>
-          <a
-            class="text-sm font-medium text-gray-700 hover:text-ff-blue focus-visible:outline-ff-green"
-            href={l.href}
-          >
-            {l.label}
-          </a>
-        </li>
-      ))}
-      <li>
-        <a
-          href={`${BASE}contact`}
-          class={clsx(
-            "rounded-lg px-3 py-2 text-sm font-semibold text-white",
-            "bg-ff-blue hover:bg-ff-green transition-colors shadow-soft"
-          )}
-        >
-          Get a demo
-        </a>
-      </li>
-    </ul>
+    ...
+    <a href={`${BASE_NORM}contact`} class={clsx("rounded-lg px-3 py-2 text-sm font-semibold text-white","bg-ff-blue hover:bg-ff-green transition-colors shadow-soft")}>
+      Get a demo
+    </a>
+    ...
   </div>
 </nav>
