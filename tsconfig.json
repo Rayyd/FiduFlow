@@ -1,0 +1,16 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "noEmit": true,
+    "moduleResolution": "Bundler",
+    "types": [
+      "astro/client"
+    ],
+    "jsx": "react-jsx",
+    "strictNullChecks": true
+  },
+  "include": [
+    "src",
+    "astro.config.mjs"
+  ]
+}
