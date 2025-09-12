@@ -1,16 +1,36 @@
 ---
-const base = import.meta.env.BASE_URL; const year = new Date().getFullYear();
+const BASE = import.meta.env.BASE_URL?.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : (import.meta.env.BASE_URL || "/") + "/";
+const year = new Date().getFullYear();
 ---
 <footer class="mt-16 border-t border-gray-100 bg-ff.gray/50">
   <div class="max-w-6xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-4">
     <div class="col-span-2">
-      <div class="flex items-center gap-2"><img src={`${base}favicon.svg`} width="28" height="28" alt="" /><span class="font-display font-bold">FiduFlow</span></div>
-      <p class="mt-3 text-sm text-gray-600 max-w-prose">Automatisation intelligente. Accompagnement humain. Solutions IA conformes RGPD pour emails, workflows et reporting.</p>
+      <div class="flex items-center gap-2">
+        <img src={`${BASE}favicon.svg`} width="28" height="28" alt="" />
+        <span class="font-display font-bold">FiduFlow</span>
+      </div>
+      <p class="mt-3 text-sm text-gray-600 max-w-prose">
+        Automatisation intelligente. Accompagnement humain. Solutions IA conformes RGPD pour emails, workflows et reporting.
+      </p>
     </div>
-    <div><h3 class="text-sm font-semibold mb-2">Company</h3><ul class="space-y-1 text-sm">
-      <li><a href={`${base}services`}>Services</a></li><li><a href={`${base}pricing`}>Pricing</a></li><li><a href={`${base}contact`}>Contact</a></li></ul></div>
-    <div><h3 class="text-sm font-semibold mb-2">Legal</h3><ul class="space-y-1 text-sm">
-      <li><a href={`${base}legal/terms`}>Terms</a></li><li><a href={`${base}legal/privacy`}>Privacy</a></li><li><a href={`${base}legal/cookies`}>Cookies</a></li></ul></div>
+    <div>
+      <h3 class="text-sm font-semibold mb-2">Company</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href={`${BASE}services`}>Services</a></li>
+        <li><a href={`${BASE}pricing`}>Pricing</a></li>
+        <li><a href={`${BASE}contact`}>Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold mb-2">Legal</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href={`${BASE}legal/terms`}>Terms</a></li>
+        <li><a href={`${BASE}legal/privacy`}>Privacy</a></li>
+        <li><a href={`${BASE}legal/cookies`}>Cookies</a></li>
+      </ul>
+    </div>
   </div>
   <div class="text-center text-xs text-gray-500 pb-8">© {year} FiduFlow. All rights reserved.</div>
 </footer>
