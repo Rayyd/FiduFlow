@@ -1,13 +1,16 @@
+// astro.config.mjs
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
-// IMPORTANT: GitHub Pages base path
-const site = "https://rayyd.github.io/astro-site-starter/";
+const isVercel = process.env.VERCEL === "1";
+const site = isVercel
+  ? `https://${process.env.VERCEL_URL || "localhost:4321"}`
+  : "https://rayyd.github.io/astro-site-starter/";
 
 export default defineConfig({
   site,
-  base: "/astro-site-starter",
+  base: isVercel ? "/" : "/astro-site-starter",
   integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
   output: "static",
   prefetch: { defaultStrategy: "viewport" }
