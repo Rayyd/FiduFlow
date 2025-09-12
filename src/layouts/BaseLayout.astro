@@ -1,0 +1,25 @@
+---
+import MetaTags from "../components/MetaTags.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+import AnalyticsPlausible from "../components/AnalyticsPlausible.astro";
+interface Props { title?: string; description?: string; canonical?: string; }
+const { title, description, canonical } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <MetaTags {title} {description} {canonical} />
+    <link rel="manifest" href={`${import.meta.env.BASE_URL}manifest.webmanifest`} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="preload" as="image" href={`${import.meta.env.BASE_URL}og-image.png`} />
+    <style is:global>@import "/src/styles/global.css";</style>
+  </head>
+  <body class="bg-white">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Nav /><main id="main" class="min-h-[60vh]"><slot /></main>
+    <Footer /><CookieBanner /><AnalyticsPlausible />
+  </body>
+</html>

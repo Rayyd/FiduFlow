@@ -1,0 +1,8 @@
+@font-face{font-family:"Inter";src:url("https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMa.woff2") format("woff2");font-display:swap;font-weight:100 900;}
+@font-face{font-family:"Montserrat";src:url("https://fonts.gstatic.com/s/montserrat/v25/JTURjIg1_i6t8kCHKm45_Qph.woff2") format("woff2");font-display:swap;font-weight:100 900;}
+:root{--c-blue:#2563eb;--c-green:#10b981;--c-black:#111827;--c-gray:#f9fafb;}
+*{box-sizing:border-box}html:focus-within{scroll-behavior:smooth}html,body{margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;color:var(--c-black);background:white}
+a{text-decoration:none}a:focus-visible,button:focus-visible{outline:3px solid var(--c-green);outline-offset:2px}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;padding:.5rem 1rem;background:var(--c-blue);color:#fff}

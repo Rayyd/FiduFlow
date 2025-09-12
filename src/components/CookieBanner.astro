@@ -1,0 +1,12 @@
+---
+const key = "ff_cookie_consent_v1"; const text = "We use privacy-friendly analytics and essential cookies to improve your experience."; const more = import.meta.env.BASE_URL + "legal/cookies";
+---
+<script is:inline>
+  const STORAGE_KEY = "{key}"; const root = document.createElement('div'); const has = localStorage.getItem(STORAGE_KEY);
+  if (!has) { root.innerHTML = `<div role="dialog" aria-live="polite" aria-label="Cookie Consent" style="position:fixed;inset:auto 1rem 1rem 1rem;z-index:60;background:#111827;color:white;padding:1rem;border-radius:.75rem;box-shadow:0 8px 30px rgba(0,0,0,.2)">
+        <p style="margin:0 0 .75rem 0;font-size:.9rem;line-height:1.4">${decodeURIComponent("${encodeURIComponent(text)}")} <a href="${decodeURIComponent("${encodeURIComponent(more)}")}" style="color:#10B981;text-decoration:underline">Learn more</a>.</p>
+        <div style="display:flex;gap:.5rem;justify-content:flex-end"><button id="ff-decline" style="background:#374151;color:white;border:0;padding:.5rem .75rem;border-radius:.5rem">Decline</button><button id="ff-accept" style="background:#10B981;color:#111827;border:0;padding:.5rem .75rem;border-radius:.5rem;font-weight:700">Allow</button></div></div>`;
+    document.body.appendChild(root); document.getElementById('ff-accept')?.addEventListener('click', () => { localStorage.setItem(STORAGE_KEY, 'granted'); root.remove(); });
+    document.getElementById('ff-decline')?.addEventListener('click', () => { localStorage.setItem(STORAGE_KEY, 'denied'); root.remove(); });
+  }
+</script>

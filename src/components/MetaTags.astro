@@ -1,0 +1,13 @@
+---
+interface Props { title?: string; description?: string; canonical?: string; }
+const { title = "FiduFlow — Automatisation intelligente. Accompagnement humain.",
+        description = "FiduFlow aide les PME et fiduciaires à automatiser les emails, workflows et reporting avec des solutions IA conformes RGPD.",
+        canonical } = Astro.props;
+const site = Astro.site?.toString() ?? "https://rayyd.github.io/astro-site-starter/";
+const url = canonical ?? new URL(Astro.request.url).toString();
+---
+<title>{title}</title><meta name="description" content={description} /><link rel="canonical" href={url} />
+<meta property="og:type" content="website" /><meta property="og:title" content={title} />
+<meta property="og:description" content={description} /><meta property="og:image" content={new URL('/og-image.png', site).toString()} />
+<meta property="og:url" content={url} /><meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} /><meta name="twitter:description" content={description} /><meta name="theme-color" content="#2563EB" />
