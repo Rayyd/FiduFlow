@@ -8,33 +8,18 @@ import AnalyticsPlausible from "../components/AnalyticsPlausible.astro";
 interface Props { title?: string; description?: string; canonical?: string; }
 const { title, description, canonical } = Astro.props;
 
-// Normalise BASE_URL => toujours un "/" final
-const BASE = import.meta.env.BASE_URL?.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : (import.meta.env.BASE_URL || "/") + "/";
+// Normalise: toujours un "/" final
+const BASE = (import.meta.env.BASE_URL || "/");
+const BASE_NORM = BASE.endsWith("/") ? BASE : BASE + "/";
 ---
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <MetaTags {title} {description} {canonical} />
-
-    <link rel="manifest" href={`${BASE}manifest.webmanifest`} />
-    <link rel="icon" href={`${BASE}favicon.svg`} />
-    <link rel="preload" as="image" href={`${BASE}og-image.png`} />
-
-    <!-- CSS via Astro.resolve pour éviter les chemins cassés -->
+    ...
+    <link rel="manifest" href={`${BASE_NORM}manifest.webmanifest`} />
+    <link rel="icon" href={`${BASE_NORM}favicon.svg`} />
+    <link rel="preload" as="image" href={`${BASE_NORM}og-image.png`} />
     <link rel="stylesheet" href={Astro.resolve("../styles/global.css")} />
   </head>
-  <body class="bg-white">
-    <a href="#main" class="skip-link">Skip to content</a>
-    <Nav />
-    <main id="main" class="min-h-[60vh]">
-      <slot />
-    </main>
-    <Footer />
-    <CookieBanner />
-    <AnalyticsPlausible />
-  </body>
+  ...
 </html>
